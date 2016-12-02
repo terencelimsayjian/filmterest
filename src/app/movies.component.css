@@ -1,0 +1,26 @@
+.movie-parent-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.movie-container {
+    margin: auto;
+}
+
+.movie-poster-container {
+    height: 231px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.movie-poster-container img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+.movie-summary-container {
+    margin: auto;
+}
