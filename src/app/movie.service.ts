@@ -8,15 +8,20 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class MovieService {
-    private moviesUrl = 'https://api.themoviedb.org/3/movie/now_playing?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
-    // Now playing page 1
+    private moviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
+    // Popular page 1
+    private nowPlayingMoviesUrl = 'https://api.themoviedb.org/3/movie/now_playing?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
+
+    private upcomingMoviesUrl = 'https://api.themoviedb.org/3/movie/upcoming?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
+
+    
+
     constructor(private http: Http) { }
 
-    getMovies() {
-        return this.http.get(this.moviesUrl)
+    getMovies(url) {
+        return this.http.get(url)
             .map((response: Response) => response.json());
     }
-
 
     convertApiDataToMovie(apiMovieData): Movie {
         let movie = new Movie;

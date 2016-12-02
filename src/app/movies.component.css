@@ -23,4 +23,6 @@
 
 .movie-summary-container {
     margin: auto;
+    overflow: hidden;
+    max-width: 75ch;
 }

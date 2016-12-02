@@ -10,6 +10,7 @@ import { MovieService } from './movie.service';
 })
 export class MoviesComponent implements OnInit {
     movies: Movie[] = [];
+    private moviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
 
     selectedMovie: Movie;
 
@@ -24,13 +25,12 @@ export class MoviesComponent implements OnInit {
     constructor(private movieService: MovieService) { }
 
     getMovies() {
-        this.movieService.getMovies()
+        this.movieService.getMovies(this.moviesUrl)
             .subscribe((data) => {
                 data.results.forEach(movie => {
                     this.movies.push(this.movieService.convertApiDataToMovie(movie));
                 });
             });
-        console.log(this.movies);
     }
 
     ngOnInit() {
