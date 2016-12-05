@@ -9,6 +9,7 @@ import { MoviesComponent } from './movies.component';
 import { MovieDetailComponent } from './movie-detail.component';
 import { NavBarComponent } from './nav-bar.component';
 import { DiscoverComponent } from './discover.component';
+import { MovieComponent } from './movie.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DiscoverComponent } from './discover.component';
     MoviesComponent,
     MovieDetailComponent,
     NavBarComponent,
-    DiscoverComponent
+    DiscoverComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,

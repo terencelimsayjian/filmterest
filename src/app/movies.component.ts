@@ -10,9 +10,12 @@ import { MovieService } from './movie.service';
 })
 export class MoviesComponent implements OnInit {
     movies: Movie[] = [];
-    private moviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
+    movie: Movie;
+    private moviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1';
 
     selectedMovie: Movie;
+
+    constructor(private movieService: MovieService) { }
 
     onSelect(movie: Movie) {
         this.selectedMovie = movie;
@@ -22,13 +25,20 @@ export class MoviesComponent implements OnInit {
         this.selectedMovie = null;
     }
 
-    constructor(private movieService: MovieService) { }
-
     getMovies() {
         this.movieService.getMovies(this.moviesUrl)
             .subscribe((data) => {
                 data.results.forEach(movie => {
                     this.movies.push(this.movieService.convertApiDataToMovie(movie));
+                });
+            });
+    }
+
+    getMovie() {
+        this.movieService.getMovies(this.moviesUrl)
+            .subscribe((data) => {
+                data.results(movie => {
+                    this.movie = this.movieService.convertApiDataToMovie(movie);
                 });
             });
     }

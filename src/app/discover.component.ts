@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from './movie.service';
 import { Movie } from './movie';
 
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+
+import 'rxjs/add/operator/switchMap';
+
 @Component ({
     selector: 'app-discover',
     templateUrl: 'discover.component.html',
@@ -9,34 +15,43 @@ import { Movie } from './movie';
     providers: [ MovieService ]
 })
 export class DiscoverComponent implements OnInit {
+    values = [2016, 2015, 2014];
     movies: Movie[] = [];
-
-    private discoverMoviesUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2016&with_genres=28';
-
     selectedMovie: Movie;
+
+    constructor (
+        private movieService: MovieService,
+        private route: ActivatedRoute,
+        private location: Location,
+        private router: Router
+    ) { }
 
     onSelect(movie: Movie) {
         this.selectedMovie = movie;
     }
 
-    updateUrl(genreId) {
-        this.discoverMoviesUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2016&with_genres=' + genreId
-        this.getMovies();
+    changeGenre(genre: string) {
+        this.router.navigate([`/discover/${genre}/2016`]);
     }
 
-    constructor(private movieService: MovieService) { }
+    changeYear(year: number) {
+        this.router.navigate([`/discover/action/${year}`]);
+    }
 
-    getMovies() {
-        this.movies = [];
-        this.movieService.getMovies(this.discoverMoviesUrl)
+    discoverMovies() {
+        this.route.params
+            .do(() => this.movies = [])
+            .switchMap((params: Params) =>
+                this.movieService.discoverMovies(params['genre'], +params['primaryReleaseYear']))
             .subscribe((data) => {
                 data.results.forEach(movie => {
                     this.movies.push(this.movieService.convertApiDataToMovie(movie));
                 });
-            });
+        });
     }
 
-    ngOnInit() {
-        this.getMovies();
+    ngOnInit(): void {
+        this.discoverMovies();
     }
+
 }

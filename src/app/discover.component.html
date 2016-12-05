@@ -1,59 +1,49 @@
 <div class="movie-parent-container">
     <h1>Discover</h1>
 
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Dropdown
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li (click)="updateUrl(28)">Action</li>
-        <li (click)="updateUrl(12)">Adventure</li>
-        <li (click)="updateUrl(16)">Animation</li>
-        <li (click)="updateUrl(35)">Comedy</li>
-        <li (click)="updateUrl(80)">Crime</li>
-        <li (click)="updateUrl(99)">Documentary</li>
-        <li (click)="updateUrl(18)">Drama</li>
-        <li (click)="updateUrl(10751)">Family</li>
-        <li (click)="updateUrl(14)">Fantasy</li>
-        <li (click)="updateUrl(36)">History</li>
-        <li (click)="updateUrl(27)">Horror</li>
-        <li (click)="updateUrl(10402)">Music</li>
-        <li (click)="updateUrl(9648)">Mystery</li>
-        <li (click)="updateUrl(10749)">Romance</li>
-        <li (click)="updateUrl(878)">Science Fiction</li>
-        <li (click)="updateUrl(10770)">TV Movie</li>
-        <li (click)="updateUrl(53)">Thriller</li>
-        <li (click)="updateUrl(10752)">War</li>
-        <li (click)="updateUrl(37)">Western</li>
-    </ul>
-</div>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Genre
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <!--<li *ngFor="let genre of genres" (click)="changeGenre(genre.name)"><a>{{genre.name}}</a></li>-->
+            <li (click)="changeGenre('action')"><a>Action</a></li>
+            <li (click)="changeGenre('adventure')"><a>Adventure</a></li>
+            <li (click)="changeGenre('animation')"><a>Animation</a></li>
+            <li (click)="changeGenre('comedy')"><a>Comedy</a></li>
+            <li (click)="changeGenre('crime')"><a>Crime</a></li>
+            <li (click)="changeGenre('documentary')"><a>Documentary</a></li>
+            <li (click)="changeGenre('drama')"><a>Drama</a></li>
+            <li (click)="changeGenre('family')"><a>Family</a></li>
+            <li (click)="changeGenre('fantasy')"><a>Fantasy</a></li>
+            <li (click)="changeGenre('history')"><a>History</a></li>
+            <li (click)="changeGenre('horror')"><a>Horror</a></li>
+            <li (click)="changeGenre('music')"><a>Music</a></li>
+            <li (click)="changeGenre('mystery')"><a>Mystery</a></li>
+            <li (click)="changeGenre('romance')"><a>Romance</a></li>
+            <li (click)="changeGenre('scifi')"><a>Science Fiction</a></li>
+            <li (click)="changeGenre('tvmovie')"><a>TV Movie</a></li>
+            <li (click)="changeGenre('thriller')"><a>Thriller</a></li>
+            <li (click)="changeGenre('war')"><a>War</a></li>
+            <li (click)="changeGenre('western')"><a>Western</a></li>
+        </ul>
+    </div>
 
-    <!--let genres = [
-    { 'id': 28, 'name': 'Action' },
-    { 'id': 12, 'name': 'Adventure' },
-    { 'id': 16, 'name': 'Animation' },
-    { 'id': 35, 'name': 'Comedy' },
-    { 'id': 80, 'name': 'Crime' },
-    { 'id': 99, 'name': 'Documentary' },
-    { 'id': 18, 'name': 'Drama' },
-    { 'id': 10751, 'name': 'Family' },
-    { 'id': 14, 'name': 'Fantasy' },
-    { 'id': 36, 'name': 'History' },
-    { 'id': 27, 'name': 'Horror' },
-    { 'id': 10402, 'name': 'Music' },
-    { 'id': 9648, 'name': 'Mystery' },
-    { 'id': 10749, 'name': 'Romance' },
-    { 'id': 878, 'name': 'Science Fiction' },
-    { 'id': 10770, 'name': 'TV Movie' },
-    { 'id': 53, 'name': 'Thriller' },
-    { 'id': 10752, 'name': 'War' },
-    { 'id': 37, 'name': 'Western' }
-  ];-->
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Year
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li *ngFor="let value of values" (click)="changeYear(value)"><a>{{value}}</a></li>
+        </ul>
+    </div>
+
 
     <div *ngFor="let movie of movies" (click)="onSelect(movie)">
-        <div class="col-md-2">
-            <div class="panel panel-default movie-container">
+        <div class="col-md-2 movie-container">
+            <div class="panel panel-default">
                 <div class="movie-poster-container panel-body">
                     <img src="{{ movie.poster_path }}" alt="{{ movie.title }}">
                 </div>
