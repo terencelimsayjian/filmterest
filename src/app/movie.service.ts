@@ -21,6 +21,8 @@ export class MovieService {
     private primaryReleaseYearParams = '&primary_release_year=';
     private genresParams = '&with_genres=';
 
+    private movieUrl = 'https://api.themoviedb.org/3/movie/284052?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US';
+
     getGenreId(genre: string): number {
         return GENRES[genre];
     }
@@ -29,6 +31,13 @@ export class MovieService {
 
     getMovies(url) {
         return this.http.get(url)
+            .map((response: Response) => response.json());
+    }
+
+    getMovie(movieId: number) {
+        let aaa = 'https://api.themoviedb.org/3/movie/';
+        let bbb = '?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US';
+        return this.http.get(aaa + movieId + bbb)
             .map((response: Response) => response.json());
     }
 
