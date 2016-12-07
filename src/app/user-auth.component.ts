@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserAuthService } from './user-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-auth',
@@ -16,22 +17,23 @@ export class UserAuthComponent {
 
     constructor(
         public fb: FormBuilder,
-        private userAuthService: UserAuthService
+        private userAuthService: UserAuthService,
+        private router: Router
     ) { }
 
+    // TODO: Throw errors if fail
     login() {
         this.userAuthService.login(this.loginForm.value.email, this.loginForm.value.password);
+        this.router.navigate(['/movie']);
     }
 
     googleLogin() {
         this.userAuthService.googleLogin();
+        this.router.navigate(['/movie']);
     }
 
     facebookLogin() {
         this.userAuthService.facebookLogin();
-    }
-
-    logout() {
-        this.userAuthService.logout();
+        this.router.navigate(['/movie']);
     }
 };
