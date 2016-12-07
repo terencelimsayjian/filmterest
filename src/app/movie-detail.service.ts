@@ -14,7 +14,9 @@ export class MovieDetailService {
         public af: AngularFire,
     ) {
         this.af.auth.subscribe(auth => {
-            this.userId = auth.uid;
+            if (auth) {
+                this.userId = auth.uid;
+            }
         });
     }
 
@@ -35,7 +37,7 @@ export class MovieDetailService {
     convertSingleApiDataToMovie(apiMovieData): Movie {
         let movie = new Movie;
         let posterUrl = 'https://image.tmdb.org/t/p/w154'; // [92, 154, 185, 342, 500, 780, original]
-        let backdropUrl = 'https://image.tmdb.org/t/p/w1280'; // [300, 780, 1280, original]
+        let backdropUrl = 'https://image.tmdb.org/t/p/w780'; // [300, 780, 1280, original]
 
         let genreArray: number[] = [];
         let genres = apiMovieData.genres;
@@ -56,7 +58,6 @@ export class MovieDetailService {
 
     delete(movieid: string): Promise<void> {
         let url = this.firebaseUrl + this.userId + '/movies/' + movieid + '.json';
-        console.log(url);
         return this.http.delete(url)
             .toPromise()
             .then(() => null);

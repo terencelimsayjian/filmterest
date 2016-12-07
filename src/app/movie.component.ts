@@ -14,7 +14,6 @@ import { AngularFire } from 'angularfire2';
 })
 export class MovieComponent implements OnInit {
     movie: Movie;
-    userId: string;
 
     constructor(
         public af: AngularFire,

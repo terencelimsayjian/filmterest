@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 
 export class MyMoviesComponent implements OnInit {
     movies: MyMovie[] = [];
+    userId: string;
 
     private urlPartition =  'https://filmterest-78d33.firebaseio.com/';
 
@@ -27,7 +28,15 @@ export class MyMoviesComponent implements OnInit {
         private moviesService: MoviesService,
         private movieDetailService: MovieDetailService,
         private router: Router
-    ) { }
+    ) {
+        this.af.auth.subscribe(auth => {
+            if (auth) {
+                this.userId = auth.uid;
+            } else {
+                this.router.navigate([`/login`]);
+            }
+        });
+    }
 
     getMovies() {
         this.route.params

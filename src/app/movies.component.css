@@ -1,5 +1,5 @@
 .movie-parent-container {
-    width: 1200px;
+    width: 1000px;
     margin: 0 auto;
 }
 
@@ -7,21 +7,12 @@
 }
 
 .movie-poster-container {
-    height: 231px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    /*height: 231px;*/
+
 }
 
 .movie-poster-container img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
 }
 
 .movie-summary-container {
-    margin: auto;
-    overflow: hidden;
-    max-width: 75ch;
 }

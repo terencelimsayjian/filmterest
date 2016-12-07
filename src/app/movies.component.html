@@ -2,8 +2,8 @@
     <h1>Popular</h1>
     <div *ngFor="let movie of movies" (click)="onSelect(movie)">
         <div class="col-md-2">
-            <div class="panel panel-default movie-container">
-                <div class="movie-poster-container panel-body">
+            <!--<div class="panel panel-default movie-container">-->
+                <div class="movie-poster-container">
                     <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt=""></a>
                 </div>
 
@@ -11,7 +11,7 @@
                     <h3>{{ movie.title }}</h3>
                     <p> {{ movie.api_id }} </p>
                 </div>-->
-            </div>
+            <!--</div>-->
         </div>
     </div>
 </div>

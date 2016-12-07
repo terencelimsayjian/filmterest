@@ -1,0 +1,48 @@
+.single-movie-container {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.movie-backdrop-container {
+    height: 50%;
+}
+
+.single-movie-details-container {
+    width: 700px;
+    margin: 0 auto;
+    position: relative;
+    bottom: 60px;
+}
+
+.movie-poster-container {
+    width: 25%;
+    float: left;
+}
+
+.movie-summary-container {
+    width: 75%;
+    float: right;
+    /*overflow: hidden;
+    white-space: nowrap;*/
+}
+
+.overlaid-text {
+    color: white;
+}
+
+h3 {
+    margin-top: 10px;
+}
+
+.overview {
+    display: inline-block;
+}
+
+button {
+    position: absolute;
+    /*bottom: 5px;
+    left: 50px;*/
+    right: 0;
+    top: 75px;
+    padding: 3px 6px;
+}

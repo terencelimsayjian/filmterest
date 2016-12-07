@@ -5,14 +5,12 @@ import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2/angularfire2
 export class UserAuthService {
   user = {};
 
-  constructor (public af: AngularFire ) {
+  constructor (public af: AngularFire) {
       this.af.auth.subscribe(user => {
         if (user) {
-        console.log(user);
         this.user = user;
         } else {
         this.user = {};
-        console.log(this.user);
         }
     });
   }

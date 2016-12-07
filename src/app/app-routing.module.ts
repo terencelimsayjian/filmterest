@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'movie/:id', component: MovieComponent },
     { path: '', redirectTo: '/movie', pathMatch: 'full' },
     { path: 'discover', redirectTo: '/discover/action/2016', pathMatch: 'full' },
-    { path: 'discover/:genre/:primaryReleaseYear', component: DiscoverComponent },
+    { path: 'discover/:genre/:primaryReleaseYear/:page', component: DiscoverComponent },
     { path: 'login', component: UserAuthComponent },
     { path: 'signup', component: SignUpComponent },
     { path: ':userid', component: MyMoviesComponent },

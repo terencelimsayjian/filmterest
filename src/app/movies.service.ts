@@ -17,7 +17,7 @@ export class MoviesService {
     private upcomingMoviesUrl = 'https://api.themoviedb.org/3/movie/upcoming?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
 
     private discoverMoviesUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false';
-    private pageParams = '&page=1';
+    private pageParams = '&page=';
     private primaryReleaseYearParams = '&primary_release_year=';
     private genresParams = '&with_genres=';
 
@@ -34,8 +34,9 @@ export class MoviesService {
             .map((response: Response) => response.json());
     }
 
-    discoverMovies(genre: string, primaryReleaseYear: number) {
-        return this.http.get(this.discoverMoviesUrl + this.pageParams
+    discoverMovies(genre: string, primaryReleaseYear: number, page: number) {
+        return this.http.get(this.discoverMoviesUrl
+                            + this.pageParams + page
                             + this.primaryReleaseYearParams + primaryReleaseYear
                             + this.genresParams + this.getGenreId(genre))
             .map((response: Response) => response.json());
@@ -44,7 +45,7 @@ export class MoviesService {
     convertApiDataToMovie(apiMovieData): Movie {
         let movie = new Movie;
         let posterUrl = 'https://image.tmdb.org/t/p/w154'; // [92, 154, 185, 342, 500, 780, original]
-        let backdropUrl = 'https://image.tmdb.org/t/p/w1280'; // [300, 780, 1280, original]
+        let backdropUrl = 'https://image.tmdb.org/t/p/w780'; // [300, 780, 1280, original]
 
         movie.poster_path = posterUrl + apiMovieData.poster_path;
         movie.overview = apiMovieData.overview;
