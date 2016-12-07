@@ -42,4 +42,5 @@ export class MovieComponent implements OnInit {
                 console.log('Movie Saved!', movie);
             });
         }
+
 }

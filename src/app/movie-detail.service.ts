@@ -53,4 +53,13 @@ export class MovieDetailService {
 
         return movie;
     }
+
+    delete(movieid: string): Promise<void> {
+        let url = this.firebaseUrl + this.userId + '/movies/' + movieid + '.json';
+        console.log(url);
+        return this.http.delete(url)
+            .toPromise()
+            .then(() => null);
+            // .catch(this.handleError);
+        }
 }

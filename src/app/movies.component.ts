@@ -15,7 +15,9 @@ export class MoviesComponent implements OnInit {
 
     selectedMovie: Movie;
 
-    constructor(private moviesService: MoviesService) { }
+    constructor(
+        private moviesService: MoviesService
+    ) { }
 
     onSelect(movie: Movie) {
         this.selectedMovie = movie;

@@ -30,8 +30,8 @@ export class UserAuthService {
 
     googleLogin() {
         this.af.auth.login({
-            provider: AuthProviders.Google
-            // method: AuthMethods.Redirect
+            provider: AuthProviders.Google,
+            method: AuthMethods.Redirect
         });
     }
 
