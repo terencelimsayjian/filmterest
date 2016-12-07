@@ -11,7 +11,7 @@ import { MyMoviesComponent } from './mymovies.component';
 const routes: Routes = [
     { path: 'movie', component: MoviesComponent },
     { path: 'movie/:id', component: MovieComponent },
-    { path: '', redirectTo: '/movie', pathMatch: 'full' },
+    { path: '/', redirectTo: '/movie', pathMatch: 'full' },
     { path: 'discover', redirectTo: '/discover/action/2016', pathMatch: 'full' },
     { path: 'discover/:genre/:primaryReleaseYear', component: DiscoverComponent },
     { path: 'login', component: UserAuthComponent },
