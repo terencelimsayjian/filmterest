@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { MoviesService } from './movies.service';
-import { Movie } from './movie';
+import { MyMovie } from './mymovie';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MovieDetailService } from './movie-detail.service';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 })
 
 export class MyMoviesComponent implements OnInit {
-    movies: Movie[] = [];
+    movies: MyMovie[] = [];
 
     private urlPartition =  'https://filmterest-78d33.firebaseio.com/';
 
