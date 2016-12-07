@@ -38,11 +38,16 @@ h3 {
     display: inline-block;
 }
 
-button {
+.navigate-back {
     position: absolute;
-    /*bottom: 5px;
-    left: 50px;*/
-    right: 0;
+    right: 10px;
+    top: 75px;
+    padding: 3px 6px;
+}
+
+.add-collection {
+    position: absolute;
+    right: 60px;
     top: 75px;
     padding: 3px 6px;
 }

@@ -10,6 +10,7 @@ import { MoviesService } from './movies.service';
 })
 export class MoviesComponent implements OnInit {
     movies: Movie[] = [];
+    popularMovies: Movie[] = [];
     movie: Movie;
     private moviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1';
 
@@ -45,7 +46,14 @@ export class MoviesComponent implements OnInit {
             });
     }
 
+    getPopularMovies() {
+        for (let index = 0; index < 5; index++) {
+            this.popularMovies.push(this.movies[index]);
+        }
+    }
+
     ngOnInit() {
         this.getMovies();
+        this.getPopularMovies();
     }
 }

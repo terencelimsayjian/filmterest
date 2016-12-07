@@ -11,7 +11,7 @@ import 'rxjs/add/operator/switchMap';
 @Component ({
     selector: 'app-discover',
     templateUrl: 'discover.component.html',
-    styleUrls: [ 'discover.component.css', 'movies.component.css' ],
+    styleUrls: [ 'discover.component.css' ],
     providers: [ MoviesService ]
 })
 export class DiscoverComponent implements OnInit {

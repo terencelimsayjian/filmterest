@@ -3,6 +3,7 @@ import { Movie } from './movie';
 import { MovieDetailService } from './movie-detail.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AngularFire } from 'angularfire2';
+import { Location } from '@angular/common';
 
 @Component ({
     selector: 'app-movie',
@@ -19,6 +20,7 @@ export class MovieComponent implements OnInit {
         public af: AngularFire,
         private route: ActivatedRoute,
         private movieDetailService: MovieDetailService,
+        private location: Location
     ) { }
 
     getMovie() {
@@ -30,6 +32,10 @@ export class MovieComponent implements OnInit {
 
     ngOnInit() {
         this.getMovie();
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 
     // TODO: Add validation to not let pre-existing movies be added

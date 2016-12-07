@@ -11,7 +11,8 @@
         <div class="movie-summary-container">
             <h3 class="overlaid-text page-header">{{ movie.title }}</h3>
             <h3 class="overview">Overview</h3>
-            <button class="btn btn-warning" (click)="add()">Add To Collection</button>
+            <button class="btn btn-warning add-collection" (click)="add()">Add To Collection</button>
+            <button class="btn btn-primary navigate-back" (click)="goBack()">Back</button>
             <p>{{ movie.overview }}</p>
             <h3 class="label label-default">Release Date: {{ movie.release_date }}</h3>
         </div>

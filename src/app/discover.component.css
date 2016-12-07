@@ -1,0 +1,19 @@
+.movie-parent-container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.movie-poster-container {
+    width: 20%;
+    height: 240px;
+    display: inline-block;
+}
+
+.dropdown {
+    display: inline-block;
+}
+
+.discover-selectors {
+    margin-bottom: 30px;
+    text-align: center;
+}
