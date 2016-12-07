@@ -20,7 +20,7 @@ export class UserAuthComponent {
     ) { }
 
     login() {
-        this.userAuthService.login(this.loginForm.value.email, this.loginForm.value.password)
+        this.userAuthService.login(this.loginForm.value.email, this.loginForm.value.password);
     }
 
     googleLogin() {

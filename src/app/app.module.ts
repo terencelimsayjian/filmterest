@@ -16,6 +16,7 @@ import { DiscoverComponent } from './discover.component';
 import { MovieComponent } from './movie.component';
 import { UserAuthComponent } from './user-auth.component';
 import { SignUpComponent } from './signup.component';
+import { MyMoviesComponent } from './mymovies.component';
 
 export const firebaseConfig = {
     apiKey: 'AIzaSyAE2I-hCUtN7MViKNhNT1ADQgWCwSs5ICU',
@@ -34,7 +35,8 @@ export const firebaseConfig = {
     DiscoverComponent,
     MovieComponent,
     UserAuthComponent,
-    SignUpComponent
+    SignUpComponent,
+    MyMoviesComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ export const firebaseConfig = {
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig,{
+    AngularFireModule.initializeApp(firebaseConfig, {
       provider: AuthProviders.Google,
       method: AuthMethods.Popup
     })

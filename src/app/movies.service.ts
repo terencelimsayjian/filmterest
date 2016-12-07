@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
 
 @Injectable()
-export class MovieService {
+export class MoviesService {
     private moviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
     // Popular page 1
     private nowPlayingMoviesUrl = 'https://api.themoviedb.org/3/movie/now_playing?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
@@ -31,13 +31,6 @@ export class MovieService {
 
     getMovies(url) {
         return this.http.get(url)
-            .map((response: Response) => response.json());
-    }
-
-    getMovie(movieId: number) {
-        let aaa = 'https://api.themoviedb.org/3/movie/';
-        let bbb = '?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US';
-        return this.http.get(aaa + movieId + bbb)
             .map((response: Response) => response.json());
     }
 
@@ -63,25 +56,18 @@ export class MovieService {
         return movie;
     }
 
-    convertSingleApiDataToMovie(apiMovieData): Movie {
+    convertFirebaseDataToMovie(apiMovieData): Movie {
         let movie = new Movie;
-        let posterUrl = 'https://image.tmdb.org/t/p/w154'; // [92, 154, 185, 342, 500, 780, original]
-        let backdropUrl = 'https://image.tmdb.org/t/p/w1280'; // [300, 780, 1280, original]
+        // let posterUrl = 'https://image.tmdb.org/t/p/w154'; // [92, 154, 185, 342, 500, 780, original]
+        // let backdropUrl = 'https://image.tmdb.org/t/p/w1280'; // [300, 780, 1280, original]
 
-        let genreArray: number[] = [];
-        let genres = apiMovieData.genres;
-        for (let obj of genres) {
-            genreArray.push(obj.id);
-        }
-
-        movie.poster_path = posterUrl + apiMovieData.poster_path;
+        movie.poster_path = apiMovieData.poster_path;
         movie.overview = apiMovieData.overview;
         movie.release_date = apiMovieData.release_date;
-        movie.genre_ids = genreArray;
-        movie.api_id = apiMovieData.id;
+        movie.genre_ids = apiMovieData.genre_ids;
+        movie.api_id = apiMovieData.api_id;
         movie.title = apiMovieData.title;
-        movie.backdrop_path = backdropUrl + apiMovieData.backdrop_path;
-
+        movie.backdrop_path = apiMovieData.backdrop_path;
         return movie;
     }
 

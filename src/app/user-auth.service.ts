@@ -1,5 +1,5 @@
 import {Injectable, OnInit} from '@angular/core';
-import {AngularFire, AuthProviders, AuthMethods} from "angularfire2/angularfire2";
+import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2/angularfire2';
 
 @Injectable()
 export class UserAuthService {

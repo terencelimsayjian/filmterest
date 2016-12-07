@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from './movie.service';
+import { MoviesService } from './movies.service';
 import { Movie } from './movie';
 
 import { ActivatedRoute, Params } from '@angular/router';
@@ -12,7 +12,7 @@ import 'rxjs/add/operator/switchMap';
     selector: 'app-discover',
     templateUrl: 'discover.component.html',
     styleUrls: [ 'discover.component.css', 'movies.component.css' ],
-    providers: [ MovieService ]
+    providers: [ MoviesService ]
 })
 export class DiscoverComponent implements OnInit {
     values = [2016, 2015, 2014];
@@ -20,7 +20,7 @@ export class DiscoverComponent implements OnInit {
     selectedMovie: Movie;
 
     constructor (
-        private movieService: MovieService,
+        private moviesService: MoviesService,
         private route: ActivatedRoute,
         private location: Location,
         private router: Router
@@ -42,10 +42,10 @@ export class DiscoverComponent implements OnInit {
         this.route.params
             .do(() => this.movies = [])
             .switchMap((params: Params) =>
-                this.movieService.discoverMovies(params['genre'], +params['primaryReleaseYear']))
+                this.moviesService.discoverMovies(params['genre'], +params['primaryReleaseYear']))
             .subscribe((data) => {
                 data.results.forEach(movie => {
-                    this.movies.push(this.movieService.convertApiDataToMovie(movie));
+                    this.movies.push(this.moviesService.convertApiDataToMovie(movie));
                 });
         });
     }

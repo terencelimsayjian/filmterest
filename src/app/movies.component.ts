@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from './movie';
-import { MovieService } from './movie.service';
+import { MoviesService } from './movies.service';
 
 @Component ({
     selector: 'app-movies',
     templateUrl: 'movies.component.html',
     styleUrls: [ 'movies.component.css' ],
-    providers: [ MovieService ]
+    providers: [ MoviesService ]
 })
 export class MoviesComponent implements OnInit {
     movies: Movie[] = [];
@@ -15,7 +15,7 @@ export class MoviesComponent implements OnInit {
 
     selectedMovie: Movie;
 
-    constructor(private movieService: MovieService) { }
+    constructor(private moviesService: MoviesService) { }
 
     onSelect(movie: Movie) {
         this.selectedMovie = movie;
@@ -26,19 +26,19 @@ export class MoviesComponent implements OnInit {
     }
 
     getMovies() {
-        this.movieService.getMovies(this.moviesUrl)
+        this.moviesService.getMovies(this.moviesUrl)
             .subscribe((data) => {
                 data.results.forEach(movie => {
-                    this.movies.push(this.movieService.convertApiDataToMovie(movie));
+                    this.movies.push(this.moviesService.convertApiDataToMovie(movie));
                 });
             });
     }
 
     getMovie() {
-        this.movieService.getMovies(this.moviesUrl)
+        this.moviesService.getMovies(this.moviesUrl)
             .subscribe((data) => {
                 data.results(movie => {
-                    this.movie = this.movieService.convertApiDataToMovie(movie);
+                    this.movie = this.moviesService.convertApiDataToMovie(movie);
                 });
             });
     }

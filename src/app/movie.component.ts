@@ -1,31 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from './movie';
-import { MovieService } from './movie.service';
+import { MovieDetailService } from './movie-detail.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { AngularFire } from 'angularfire2';
 
 @Component ({
     selector: 'app-movie',
     templateUrl: 'movie.component.html',
     styleUrls: [ 'movie.component.css' ],
-    providers: [ MovieService ]
+    providers: [
+        MovieDetailService
+     ]
 })
 export class MovieComponent implements OnInit {
     movie: Movie;
-    private moviesUrl = 'https://api.themoviedb.org/3/movie/284052?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US';
+    userId: string;
 
     constructor(
-        private movieService: MovieService,
-        private route: ActivatedRoute
+        public af: AngularFire,
+        private route: ActivatedRoute,
+        private movieDetailService: MovieDetailService,
     ) { }
 
     getMovie() {
     this.route.params
         .switchMap((params: Params) =>
-            this.movieService.getMovie(+params['id']))
-        .subscribe((data) => this.movie = this.movieService.convertSingleApiDataToMovie(data));
+            this.movieDetailService.getMovie(+params['id']))
+        .subscribe((data) => this.movie = this.movieDetailService.convertSingleApiDataToMovie(data));
     }
 
     ngOnInit() {
         this.getMovie();
     }
+
+    // TODO: Add validation to not let pre-existing movies be added
+    add(): void {
+        // name = name.trim();
+        // if (!name) { return; }
+        this.movieDetailService.create(this.movie)
+            .then(movie => {
+                console.log('Movie Saved!', movie);
+            });
+        }
 }

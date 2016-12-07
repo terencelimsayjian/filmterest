@@ -6,6 +6,7 @@ import { DiscoverComponent } from './discover.component';
 import { MovieComponent } from './movie.component';
 import { UserAuthComponent } from './user-auth.component';
 import { SignUpComponent } from './signup.component';
+import { MyMoviesComponent } from './mymovies.component';
 
 const routes: Routes = [
     { path: 'movie', component: MoviesComponent },
@@ -14,7 +15,9 @@ const routes: Routes = [
     { path: 'discover', redirectTo: '/discover/action/2016', pathMatch: 'full' },
     { path: 'discover/:genre/:primaryReleaseYear', component: DiscoverComponent },
     { path: 'login', component: UserAuthComponent },
-    { path: 'signup', component: SignUpComponent }
+    { path: 'signup', component: SignUpComponent },
+    { path: ':userid', component: MyMoviesComponent },
+    { path: ':userid/movies', component: MyMoviesComponent }
 ];
 
 @NgModule({
