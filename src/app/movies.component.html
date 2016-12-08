@@ -1,28 +1,37 @@
-<h1>Popular</h1>
-<!--<div *ngIf="popularMovies">
-    <div *ngFor="let movie of popularMovies">
-        <div class="col-md-2">
-                <div class="movie-poster-container">
-                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt=""></a>
-                </div>
-        </div>
-    </div>
-</div>-->
 <div class="movie-parent-container">
-    <div *ngFor="let movie of movies" (click)="onSelect(movie)">
-        <div class="col-md-2">
-            <!--<div class="panel panel-default movie-container">-->
-                <div class="movie-poster-container">
-                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt=""></a>
-                </div>
 
-                <!--<div class="movie-summary-container panel-heading">
-                    <h3>{{ movie.title }}</h3>
-                    <p> {{ movie.api_id }} </p>
-                </div>-->
-            <!--</div>-->
+<div class="panel-wrapper">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title">Popular</h3></div>
+        <div class="panel-body">
+            <div class="panel-contents">
+                <button class="btn btn-default left-arrow-btn" type="" (click)="getPreviousPopularMovies()"><span class="glyphicon glyphicon-menu-left"></span></button>
+                <div *ngFor="let movie of fivePopularMovies" class="movie-poster-container">
+                    <div class="movie-poster">
+                        <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+                    </div>
+                </div>
+                <button class="btn btn-default right-arrow-btn" type="" (click)="getNextPopularMovies()"><span class="glyphicon glyphicon-menu-right"></span></button>
+            </div>
         </div>
     </div>
 </div>
 
-<app-movie-detail [movie]="selectedMovie" (unselectMovie)="onUnselect()"></app-movie-detail> 
+<div class="panel-wrapper">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title">Upcoming</h3></div>
+            <div class="panel-body">
+                <div class="panel-contents">
+                    <button class="btn btn-default left-arrow-btn" type="" (click)="getPreviousNowPlayingMovies()"><span class="glyphicon glyphicon-menu-left"></span></button>
+                    <div *ngFor="let movie of fiveNowPlayingMovies" class="movie-poster-container">
+                        <div class="movie-poster">
+                            <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+                        </div>
+                    </div>
+                    <button class="btn btn-default right-arrow-btn" type="" (click)="getNextNowPlayingMovies()"><span class="glyphicon glyphicon-menu-right"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

@@ -7,6 +7,7 @@ import { MovieComponent } from './movie.component';
 import { UserAuthComponent } from './user-auth.component';
 import { SignUpComponent } from './signup.component';
 import { MyMoviesComponent } from './mymovies.component';
+import { SearchComponent } from './search.component';
 
 const routes: Routes = [
     { path: 'movie', component: MoviesComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
     { path: 'discover/:genre/:primaryReleaseYear/:page', component: DiscoverComponent },
     { path: 'login', component: UserAuthComponent },
     { path: 'signup', component: SignUpComponent },
-    { path: ':userid', component: MyMoviesComponent },
+    { path: 'search', component: SearchComponent },
     { path: ':userid/movies', component: MyMoviesComponent }
 ];
 

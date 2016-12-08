@@ -1,6 +1,9 @@
 <div *ngIf="movie" class="single-movie-container">
     <div class="movie-backdrop-container">
-        <img src="{{ movie.backdrop_path }}" alt="">
+        <div class="gradient-div"></div>
+        <div class="backdrop-img">
+            <img src="{{ movie.backdrop_path }}" alt="">
+        </div>
     </div>
 
     <div class="single-movie-details-container">

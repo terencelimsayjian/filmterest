@@ -10,18 +10,6 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class MoviesService {
-    private moviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
-    // Popular page 1
-    private nowPlayingMoviesUrl = 'https://api.themoviedb.org/3/movie/now_playing?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
-
-    private upcomingMoviesUrl = 'https://api.themoviedb.org/3/movie/upcoming?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1.json';
-
-    private discoverMoviesUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false';
-    private pageParams = '&page=';
-    private primaryReleaseYearParams = '&primary_release_year=';
-    private genresParams = '&with_genres=';
-
-    private movieUrl = 'https://api.themoviedb.org/3/movie/284052?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US';
 
     getGenreId(genre: string): number {
         return GENRES[genre];
@@ -35,10 +23,21 @@ export class MoviesService {
     }
 
     discoverMovies(genre: string, primaryReleaseYear: number, page: number) {
-        return this.http.get(this.discoverMoviesUrl
-                            + this.pageParams + page
-                            + this.primaryReleaseYearParams + primaryReleaseYear
-                            + this.genresParams + this.getGenreId(genre))
+        let discoverMoviesUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false';
+        let pageParams = '&page=';
+        let primaryReleaseYearParams = '&primary_release_year=';
+        let genresParams = '&with_genres=';
+        return this.http.get(discoverMoviesUrl
+                            + pageParams + page
+                            + primaryReleaseYearParams + primaryReleaseYear
+                            + genresParams + this.getGenreId(genre))
+            .map((response: Response) => response.json());
+    }
+
+    searchMovies(query: string) {
+        let moviesUrl = 'https://api.themoviedb.org/3/search/movie?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&query=';
+        let movieUrlPartition = '&page=1&include_adult=false';
+        return this.http.get(moviesUrl + query + movieUrlPartition)
             .map((response: Response) => response.json());
     }
 

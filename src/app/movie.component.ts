@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from './movie';
 import { MovieDetailService } from './movie-detail.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
 import { Location } from '@angular/common';
 
@@ -15,13 +15,21 @@ import { Location } from '@angular/common';
 })
 export class MovieComponent implements OnInit {
     movie: Movie;
+    userId: string;
 
     constructor(
         public af: AngularFire,
         private route: ActivatedRoute,
         private movieDetailService: MovieDetailService,
-        private location: Location
-    ) { }
+        private location: Location,
+        private router: Router
+    ) {
+        this.af.auth.subscribe(auth => {
+            if (auth) {
+        this.userId = auth.uid;
+            }
+        });
+    }
 
     getMovie() {
     this.route.params
@@ -42,10 +50,13 @@ export class MovieComponent implements OnInit {
     add(): void {
         // name = name.trim();
         // if (!name) { return; }
-        this.movieDetailService.create(this.movie)
-            .then(movie => {
-                console.log('Movie Saved!', movie);
+        if (this.userId) {
+            this.movieDetailService.create(this.movie)
+                .then(movie => {
             });
+        } else {
+            this.router.navigate([`/login`]);
         }
+    }
 
 }

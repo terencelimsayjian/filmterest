@@ -1,17 +1,34 @@
 .single-movie-container {
     width: 800px;
-    margin: 0 auto;
+    margin: -20px auto 0 auto;
+    position: relative;
 }
 
 .movie-backdrop-container {
-    height: 50%;
+    /*height: 50%;*/
+    height: 440px;
+    width: 780px;
+}
+
+.backdrop-img img {
+    display: block;
+    margin: 0 auto;
+}
+
+.gradient-div {
+    width: 780px;
+    /*height: 439px;*/
+    height: 100px;
+    top: 339px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); /* Standard syntax */
+    position: absolute;
 }
 
 .single-movie-details-container {
     width: 700px;
     margin: 0 auto;
-    position: relative;
     bottom: 60px;
+    position: relative;
 }
 
 .movie-poster-container {
@@ -24,6 +41,7 @@
     float: right;
     /*overflow: hidden;
     white-space: nowrap;*/
+    position: relative;
 }
 
 .overlaid-text {

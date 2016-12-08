@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { UserAuthService } from './user-auth.service';
 import { Router } from '@angular/router';
+import { MoviesService } from './movies.service';
 
 @Component ({
     selector: 'app-nav-bar',

@@ -3,16 +3,39 @@
     margin: 0 auto;
 }
 
-.movie-container {
-}
-
 .movie-poster-container {
-    /*height: 231px;*/
-
+    height: 231px;
+    width: 18%;
+    display: inline-block;
+    text-align: center;
+    padding: 0;
 }
 
-.movie-poster-container img {
+.panel-body {
+    padding: 5px;
+    height: 242px;
 }
 
-.movie-summary-container {
+.panel-contents {
+    margin: 0 auto;
 }
+
+.panel-wrapper {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.left-arrow-btn {
+    margin: auto 3px;
+}
+
+button {
+    /*width: 40px;*/
+    width: 4%;
+    display: inline-block;
+    padding-left: 9px;
+}
+
+button:focus {
+    outline: 0;
+};

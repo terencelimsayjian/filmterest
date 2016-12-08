@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 @Component ({
     selector: 'app-my-movies',
     templateUrl: 'mymovies.component.html',
-    styleUrls: [ 'mymovies.component.css' ],
+    styleUrls: [
+        'mymovies.component.css',
+        'discover.component.css'
+    ],
     providers: [
         MoviesService,
         MovieDetailService

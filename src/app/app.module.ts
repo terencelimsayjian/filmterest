@@ -17,6 +17,7 @@ import { MovieComponent } from './movie.component';
 import { UserAuthComponent } from './user-auth.component';
 import { SignUpComponent } from './signup.component';
 import { MyMoviesComponent } from './mymovies.component';
+import { SearchComponent } from './search.component';
 
 export const firebaseConfig = {
     apiKey: 'AIzaSyAE2I-hCUtN7MViKNhNT1ADQgWCwSs5ICU',
@@ -36,7 +37,8 @@ export const firebaseConfig = {
     MovieComponent,
     UserAuthComponent,
     SignUpComponent,
-    MyMoviesComponent
+    MyMoviesComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

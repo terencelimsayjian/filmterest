@@ -44,15 +44,14 @@
     <button class="btn btn-default disabled">{{page}}</button>
     <button class="btn btn-primary" (click)="nextPage()">Next Page</button>
 
+<!--alt="{{ movie.title }}"-->
 </div>
-
-    <div class="movie-container">
+    <div>
         <div *ngFor="let movie of movies" (click)="onSelect(movie)" class="movie-poster-container">
-            <div class="movie-poster-container">
+            <div class="movie-poster">
                 <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
             </div>
         </div>
     </div>
-</div>
 
-<app-movie-detail [movie]="selectedMovie" (unselectMovie)="onUnselect()"></app-movie-detail> 
+</div>

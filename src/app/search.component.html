@@ -1,5 +1,12 @@
+<div class="searchbox-container">
+    <form>
+        <div class="form-group">
+            <input #queryInput type="text" class="form-control" placeholder="Search Movies" (keyup)="searchMovies(queryInput.value)">
+        </div>
+    </form>
+</div>
+
 <div class="movie-parent-container">
-    <h1>My Movies</h1>
     <div>
         <div *ngFor="let movie of movies" (click)="onSelect(movie)" class="movie-poster-container">
             <div class="movie-poster">
@@ -7,5 +14,5 @@
             </div>
         </div>
     </div>
-</div>
 
+</div>
