@@ -1,6 +1,7 @@
 <div class="movie-parent-container">
 
 <div class="discover-selectors">
+    <div class="discover-dropdown-container">
     <div class="dropdown genre-dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             {{ genre | uppercase }}
@@ -40,9 +41,13 @@
         </ul>
     </div>
 
-    <button class="btn btn-primary" (click)="previousPage()">Previous Page</button>
-    <button class="btn btn-default disabled">{{page}}</button>
-    <button class="btn btn-primary" (click)="nextPage()">Next Page</button>
+    </div>
+
+    <div class="page-btn-container">
+        <button class="btn btn-warning" (click)="previousPage()">Previous Page</button>
+        <button class="btn btn-default disabled">{{page}}</button>
+        <button class="btn btn-warning" (click)="nextPage()">Next Page</button>
+    </div>
 
 <!--alt="{{ movie.title }}"-->
 </div>

@@ -1,11 +1,15 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable } from '@angular/core';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2/angularfire2';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserAuthService {
   user = {};
 
-  constructor (public af: AngularFire) {
+  constructor (
+      public af: AngularFire,
+      private router: Router
+    ) {
       this.af.auth.subscribe(user => {
         if (user) {
         this.user = user;

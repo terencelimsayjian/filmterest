@@ -1,11 +1,11 @@
 <div class="movie-parent-container">
-    <h1>My Movies</h1>
+    <h1 class="page-header">My Movies</h1>
     <div>
-        <div *ngFor="let movie of movies" (click)="onSelect(movie)" class="movie-poster-container">
+        <div *ngFor="let movie of movies" class="movie-poster-container">
             <div class="movie-poster">
                 <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
             </div>
+        <button class="btn btn-danger delete-btn" (click)="delete(movie.id)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
     </div>
 </div>
-

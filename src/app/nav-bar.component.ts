@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { UserAuthService } from './user-auth.service';
 import { Router } from '@angular/router';
-import { MoviesService } from './movies.service';
 
 @Component ({
     selector: 'app-nav-bar',
@@ -33,7 +32,14 @@ export class NavBarComponent {
 
     logout() {
         this.userAuthService.logout();
-        this.router.navigate(['/movie']);
+    }
+
+    viewMyCollection() {
+        if (this.islogged) {
+            this.router.navigate([`/${this.userId}/movies`]);
+        } else {
+            this.router.navigate([`/login`]);
+        }
     }
 
 };

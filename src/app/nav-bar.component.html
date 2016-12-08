@@ -10,7 +10,7 @@
       <ul class="nav navbar-nav">
         <li><a routerLink="/discover/action/2016/1">Discover</a></li>
         <li><a routerLink="/search">Search</a></li>
-        <li><a routerLink="/{{userId}}/movies">My Collection</a></li>
+        <li><a (click)="viewMyCollection()">My Collection</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!islogged"><a routerLink="/login">Login</a></li>

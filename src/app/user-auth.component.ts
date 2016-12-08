@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserAuthService } from './user-auth.service';
 import { Router } from '@angular/router';
+import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'app-user-auth',
@@ -15,25 +16,36 @@ export class UserAuthComponent {
         password: ['', Validators.required]
     });
 
+    userId: string;
+    islogged: boolean;
+
     constructor(
+        public af: AngularFire,
         public fb: FormBuilder,
         private userAuthService: UserAuthService,
         private router: Router
-    ) { }
+    ) {
+        this.af.auth.subscribe(auth => {
+            if (auth) {
+                this.islogged = true;
+                this.router.navigate(['/movie']);
+            } else {
+                this.islogged = false;
+            }
+        });
+    }
 
     // TODO: Throw errors if fail
     login() {
         this.userAuthService.login(this.loginForm.value.email, this.loginForm.value.password);
-        this.router.navigate(['/movie']);
     }
 
     googleLogin() {
         this.userAuthService.googleLogin();
-        this.router.navigate(['/movie']);
     }
 
     facebookLogin() {
         this.userAuthService.facebookLogin();
-        this.router.navigate(['/movie']);
     }
+
 };

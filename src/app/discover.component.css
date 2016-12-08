@@ -15,10 +15,6 @@
     display: inline-block;
 }
 
-.movie-poster {
-    /*height: 240px;*/
-}
-
 .discover-selectors {
     margin-bottom: 30px;
     text-align: center;
@@ -27,4 +23,13 @@
 .dropdown-menu {
     overflow-y: auto;
     max-height: 300px;
+}
+
+.discover-dropdown-container {
+    display: inline-block;
+    margin-right: 100px;
+}
+
+.page-btn-container {
+    display: inline-block;
 }

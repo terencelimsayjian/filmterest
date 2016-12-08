@@ -51,9 +51,8 @@ export class MovieComponent implements OnInit {
         // name = name.trim();
         // if (!name) { return; }
         if (this.userId) {
-            this.movieDetailService.create(this.movie)
-                .then(movie => {
-            });
+            this.movieDetailService.create(this.movie);
+            this.router.navigate([`/${this.userId}/movies`]);
         } else {
             this.router.navigate([`/login`]);
         }

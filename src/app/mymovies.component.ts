@@ -63,6 +63,7 @@ export class MyMoviesComponent implements OnInit {
         this.movieDetailService.delete(movieid)
         .then(() => {
             this.movies = this.movies.filter(h => h.id !== movieid);
+            console.log('delete called');
             });
     }
 

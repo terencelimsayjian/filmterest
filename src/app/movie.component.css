@@ -69,3 +69,7 @@ h3 {
     top: 75px;
     padding: 3px 6px;
 }
+
+p, h3 {
+    color: #f2f2f3;
+}
