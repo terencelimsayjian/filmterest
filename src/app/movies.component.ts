@@ -11,12 +11,16 @@ import { MoviesService } from './movies.service';
 export class MoviesComponent implements OnInit {
   movie: Movie;
   popularMovies: Movie[] = [];
-  fivePopularMovies: Movie[] = [];
-  popularMoviesIndex: number = 0;
+  fivePopularMovies1: Movie[] = [];
+  fivePopularMovies2: Movie[] = [];
+  fivePopularMovies3: Movie[] = [];
+  fivePopularMovies4: Movie[] = [];
 
   nowPlayingMovies: Movie[] = [];
-  fiveNowPlayingMovies: Movie[] = [];
-  nowPlayingMoviesIndex: number = 0;
+  fiveNowPlayingMovies1: Movie[] = [];
+  fiveNowPlayingMovies2: Movie[] = [];
+  fiveNowPlayingMovies3: Movie[] = [];
+  fiveNowPlayingMovies4: Movie[] = [];
 
   private moviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=1b6ce86fef4e297ddba4ca6e4118cbfd&language=en-US&page=1';
 
@@ -36,19 +40,17 @@ export class MoviesComponent implements OnInit {
         data.results.forEach(movie => {
           this.popularMovies.push(this.moviesService.convertApiDataToMovie(movie));
         });
-        this.getNextPopularMovies();
+        this.getFivePopularMovies();
         });
   }
 
-  getNowPlayingMovies() {
-    this.moviesService.getMovies(this.upcomingMoviesUrl)
-      .subscribe((data) => {
-        data.results.forEach(movie => {
-          this.nowPlayingMovies.push(this.moviesService.convertApiDataToMovie(movie));
-        });
-        this.getNextNowPlayingMovies();
-        });
+  getFivePopularMovies() {
+    this.fivePopularMovies1 = this.popularMovies.slice(0, 5);
+    this.fivePopularMovies2 = this.popularMovies.slice(5, 10);
+    this.fivePopularMovies3 = this.popularMovies.slice(10, 15);
+    this.fivePopularMovies4 = this.popularMovies.slice(15, 20);
   }
+
 
   getMovie() {
     this.moviesService.getMovies(this.moviesUrl)
@@ -59,56 +61,21 @@ export class MoviesComponent implements OnInit {
       });
   }
 
-  getPreviousPopularMovies() {
-    this.fivePopularMovies = [];
-    if (this.popularMoviesIndex !== 0) {
-      this.popularMoviesIndex -= 5;
-    } else {
-      this.popularMoviesIndex = 15;
-    }
-    let num = this.popularMoviesIndex;
-    for (let index = num; index < (num + 5); index++) {
-        this.fivePopularMovies.push(this.popularMovies[index]);
-    }
+  getNowPlayingMovies() {
+    this.moviesService.getMovies(this.upcomingMoviesUrl)
+      .subscribe((data) => {
+        data.results.forEach(movie => {
+          this.nowPlayingMovies.push(this.moviesService.convertApiDataToMovie(movie));
+        });
+        this.getFiveNowPlayingMovies();
+        });
   }
 
-  getNextPopularMovies() {
-    this.fivePopularMovies = [];
-    if (this.popularMoviesIndex !== 15) {
-      this.popularMoviesIndex += 5;
-    } else {
-      this.popularMoviesIndex = 0;
-    }
-    let num = this.popularMoviesIndex;
-    for (let index = num; index < (num + 5); index++) {
-        this.fivePopularMovies.push(this.popularMovies[index]);
-    }
-  }
-
-  getPreviousNowPlayingMovies() {
-    this.fiveNowPlayingMovies = [];
-    if (this.nowPlayingMoviesIndex !== 0) {
-      this.nowPlayingMoviesIndex -= 5;
-    } else {
-      this.nowPlayingMoviesIndex = 15;
-    }
-    let num = this.nowPlayingMoviesIndex;
-    for (let index = num; index < (num + 5); index++) {
-        this.fiveNowPlayingMovies.push(this.nowPlayingMovies[index]);
-    }
-  }
-
-  getNextNowPlayingMovies() {
-    this.fiveNowPlayingMovies = [];
-    if (this.nowPlayingMoviesIndex !== 15) {
-      this.nowPlayingMoviesIndex += 5;
-    } else {
-      this.nowPlayingMoviesIndex = 0;
-    }
-    let num = this.nowPlayingMoviesIndex;
-    for (let index = num; index < (num + 5); index++) {
-        this.fiveNowPlayingMovies.push(this.nowPlayingMovies[index]);
-    }
+  getFiveNowPlayingMovies() {
+    this.fiveNowPlayingMovies1 = this.nowPlayingMovies.slice(0, 5);
+    this.fiveNowPlayingMovies2 = this.nowPlayingMovies.slice(5, 10);
+    this.fiveNowPlayingMovies3 = this.nowPlayingMovies.slice(10, 15);
+    this.fiveNowPlayingMovies4 = this.nowPlayingMovies.slice(15, 20);
   }
 
   ngOnInit() {

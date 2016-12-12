@@ -1,49 +1,101 @@
 <div class="movie-parent-container">
 
-<div class="panel-wrapper">
-    <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title">Popular</h3></div>
-        <div class="panel-body">
-            <div class="panel-contents">
-                <button class="btn btn-default left-arrow-btn" type="" (click)="getPreviousPopularMovies()"><span class="glyphicon glyphicon-menu-left"></span></button>
-                <div *ngFor="let movie of fivePopularMovies" class="movie-poster-container">
-                    <div class="movie-poster">
-                        <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
-                    </div>
+<h1 class="page-header">Popular</h1>
+<div class="carousel slide" data-interval="false" data-ride="carousel" data-interval="10000" id="myPopularCarousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myPopularCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myPopularCarousel" data-slide-to="1"></li>
+        <li data-target="#myPopularCarousel" data-slide-to="2"></li>
+        <li data-target="#myPopularCarousel" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <div *ngFor="let movie of fivePopularMovies1" class="movie-poster-container">
+                <div class="movie-poster">
+                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
                 </div>
-                <button class="btn btn-default right-arrow-btn" type="" (click)="getNextPopularMovies()"><span class="glyphicon glyphicon-menu-right"></span></button>
+            </div>
+        </div>
+        <div class="item">
+            <div *ngFor="let movie of fivePopularMovies2" class="movie-poster-container">
+                <div class="movie-poster">
+                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div *ngFor="let movie of fivePopularMovies3" class="movie-poster-container">
+                <div class="movie-poster">
+                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div *ngFor="let movie of fivePopularMovies4" class="movie-poster-container">
+                <div class="movie-poster">
+                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+                </div>
             </div>
         </div>
     </div>
+
+    <a class="left carousel-control" href="#myPopularCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myPopularCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
-<!--
-<div class="carousel slide" data-interval="false" data-ride="carousel" id="myCarousel">
+<h1 class="page-header">Now Playing</h1>
+<div class="carousel slide" data-interval="false" data-ride="carousel" data-interval="7000" id="myCarousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
     <div class="carousel-inner">
-        <div *ngFor="let movie of fivePopularMovies" class="movie-poster-container item">
-            <div class="movie-poster">
-                <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+        <div class="item active">
+            <div *ngFor="let movie of fiveNowPlayingMovies1" class="movie-poster-container">
+                <div class="movie-poster">
+                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div *ngFor="let movie of fiveNowPlayingMovies2" class="movie-poster-container">
+                <div class="movie-poster">
+                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div *ngFor="let movie of fiveNowPlayingMovies3" class="movie-poster-container">
+                <div class="movie-poster">
+                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div *ngFor="let movie of fiveNowPlayingMovies4" class="movie-poster-container">
+                <div class="movie-poster">
+                    <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
+                </div>
             </div>
         </div>
     </div>
-    <h3>Test test</h3>
-</div>-->
 
-<div class="panel-wrapper">
-    <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title">Upcoming</h3></div>
-            <div class="panel-body">
-                <div class="panel-contents">
-                    <button class="btn btn-default left-arrow-btn" type="" (click)="getPreviousNowPlayingMovies()"><span class="glyphicon glyphicon-menu-left"></span></button>
-                    <div *ngFor="let movie of fiveNowPlayingMovies" class="movie-poster-container">
-                        <div class="movie-poster">
-                            <a routerLink="/movie/{{movie.api_id}}"><img src="{{ movie.poster_path }}" alt="{{ movie.title }}"></a>
-                        </div>
-                    </div>
-                    <button class="btn btn-default right-arrow-btn" type="" (click)="getNextNowPlayingMovies()"><span class="glyphicon glyphicon-menu-right"></span></button>
-            </div>
-        </div>
-    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
 </div>
