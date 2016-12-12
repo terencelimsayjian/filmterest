@@ -10,10 +10,10 @@ import { MyMoviesComponent } from './mymovies.component';
 import { SearchComponent } from './search.component';
 
 const routes: Routes = [
-    { path: 'movie', component: MoviesComponent },
+    // { path: 'movie', component: MoviesComponent },
     { path: 'movie/:id', component: MovieComponent },
-    { path: '', redirectTo: '/movie', pathMatch: 'full' },
-    // { path: '', component: MoviesComponent, pathMatch: 'full' },
+    // { path: '', redirectTo: '/movie', pathMatch: 'full' },
+    { path: '', component: MoviesComponent, pathMatch: 'full' },
     { path: 'discover', redirectTo: '/discover/action/2016', pathMatch: 'full' },
     { path: 'discover/:genre/:primaryReleaseYear/:page', component: DiscoverComponent },
     { path: 'login', component: UserAuthComponent },
